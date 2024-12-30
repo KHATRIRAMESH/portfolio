@@ -1,4 +1,4 @@
-/* GENERAL */
+GENERAL
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
@@ -7,9 +7,13 @@
   padding: 0;
 }
 
+
+
 body {
   font-family: "Poppins", sans-serif;
+  background-image: linear-gradient(to right top, #220817, #261122, #28192d, #2a2137, #292942, #242e47, #1f344b, #1a394e, #143c4c, #133e48, #174044, #1e413f);
 }
+
 
 html {
   scroll-behavior: smooth;
@@ -31,6 +35,10 @@ a,
 nav,
 .nav-links {
   display: flex;
+
+}
+.nav-links:hover{
+  cursor: pointer;
 }
 
 nav {
@@ -63,7 +71,7 @@ a:hover {
 }
 
 .logo:hover {
-  cursor: default;
+  cursor: pointer;
 }
 
 /* HAMBURGER MENU */

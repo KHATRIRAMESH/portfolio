@@ -1,0 +1,90 @@
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    body {
+      background-color: black;
+      color: white;
+    }
+  
+    nav,
+    .menu-links,
+    .details-container,
+    .color-container,
+    .contact-info-upper-container {
+      background-color: black;
+      border-color: white;
+    }
+  
+    a {
+      color: white;
+      text-decoration-color: grey;
+    }
+  
+    a:hover {
+      color: lightgray;
+      text-decoration-color: lightgray;
+    }
+  
+    .btn-color-1,
+    .btn-color-2 {
+      border: white 0.1rem solid;
+      background: black;
+      color: white;
+    }
+  
+    .btn-color-1:hover,
+    .btn-color-2:hover {
+      background: white;
+      color: black;
+    }
+  
+    .icon,
+    .email-icon {
+      filter: invert(1);
+    }
+  }
+  
+  /* Light Mode */
+  @media (prefers-color-scheme: light) {
+    body {
+      background-color: white;
+      color: black;
+    }
+  
+    nav,
+    .menu-links,
+    .details-container,
+    .color-container,
+    .contact-info-upper-container {
+      background-color: white;
+      border-color: black;
+    }
+  
+    a {
+      color: black;
+      text-decoration-color: grey;
+    }
+  
+    a:hover {
+      color: grey;
+      text-decoration-color: grey;
+    }
+  
+    .btn-color-1,
+    .btn-color-2 {
+      border: black 0.1rem solid;
+      background: white;
+      color: black;
+    }
+  
+    .btn-color-1:hover,
+    .btn-color-2:hover {
+      background: black;
+      color: white;
+    }
+  
+    .icon,
+    .email-icon {
+      filter: invert(0);
+    }
+  }
+  

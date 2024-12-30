@@ -10,7 +10,8 @@
   </head>
   <body>
     <nav id="desktop-nav">
-      <div class="logo">Ramesh</div>
+      <!-- <div class="logo">Ramesh</div> -->
+      <a href="/" class="logo">Ramesh</a>
       <div>
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
@@ -19,6 +20,7 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
+      <button id="theme-toggle">Toggle Dark Mode</button>
     </nav>
     <nav id="hamburger-nav">
       <div class="logo">Ramesh Khatri</div>
@@ -105,7 +107,12 @@
           </div>
           <div class="text-container">
             <p>
-              I'm a Full-Stack Developer with 1 year of experience building web applications. I enjoy creating intuitive user interfaces with React and Tailwind CSS, and building reliable backends with Node.js and Express. I'm passionate about solving problems and delivering clean, efficient code, and I’m excited to contribute to meaningful projects.
+              I'm a Full-Stack Developer with 1 year of experience building web
+              applications. I enjoy creating intuitive user interfaces with
+              React and Tailwind CSS, and building reliable backends with
+              Node.js and Express. I'm passionate about solving problems and
+              delivering clean, efficient code, and I’m excited to contribute to
+              meaningful projects.
             </p>
           </div>
         </div>
@@ -204,7 +211,7 @@
                 />
                 <div>
                   <h3>PostgreSQL</h3>
-                  <p>Basic</p>
+                  <p>Intermediate</p>
                 </div>
               </article>
               <article>
@@ -215,7 +222,7 @@
                 />
                 <div>
                   <h3>Node JS</h3>
-                  <p>Intermediate</p>
+                  <p>Experienced</p>
                 </div>
               </article>
               <article>
@@ -226,7 +233,7 @@
                 />
                 <div>
                   <h3>Express JS</h3>
-                  <p>Intermediate</p>
+                  <p>Experienced</p>
                 </div>
               </article>
               <article>
@@ -237,7 +244,7 @@
                 />
                 <div>
                   <h3>Git</h3>
-                  <p>Intermediate</p>
+                  <p>Experienced</p>
                 </div>
               </article>
             </div>
@@ -312,7 +319,9 @@
                 class="project-img"
               />
             </div>
-            <h2 class="experience-sub-title project-title">Food Deliver WebApp</h2>
+            <h2 class="experience-sub-title project-title">
+              Food Deliver WebApp
+            </h2>
             <div class="btn-container">
               <button
                 class="btn btn-color-2 project-btn"
@@ -347,7 +356,11 @@
             alt="Email icon"
             class="icon contact-icon email-icon"
           />
-          <p><a href="mailto:khatriramesh972@@gmail.com">khatriramesh972@gmail.com</a></p>
+          <p>
+            <a href="mailto:khatriramesh972@@gmail.com"
+              >khatriramesh972@gmail.com</a
+            >
+          </p>
         </div>
         <div class="contact-info-container">
           <img
@@ -355,7 +368,11 @@
             alt="LinkedIn icon"
             class="icon contact-icon"
           />
-          <p><a href="https://www.linkedin.com/in/ramesh-khatri-6b5565204/">LinkedIn</a></p>
+          <p>
+            <a href="https://www.linkedin.com/in/ramesh-khatri-6b5565204/"
+              >LinkedIn</a
+            >
+          </p>
         </div>
       </div>
     </section>
@@ -370,7 +387,13 @@
           </ul>
         </div>
       </nav>
-      <p>Copyright &#169; 2024 Ramesh Khatri. All Rights Reserved.</p>
+      <p>
+        Copyright &#169;
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        Ramesh Khatri. All Rights Reserved.
+      </p>
     </footer>
     <script src="script.js"></script>
   </body>
