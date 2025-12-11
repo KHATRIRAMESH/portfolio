@@ -18,7 +18,7 @@ const BackgroundAnimation = () => {
 
     const letters = '日本語のキーボード';
     // const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%';
-    const fontSize = 16;
+    const fontSize = 24;
     let columns = Math.floor(canvas.width / fontSize);
     let drops = [];
 
@@ -27,7 +27,7 @@ const BackgroundAnimation = () => {
         columns = Math.floor(canvas.width / fontSize);
         drops = [];
         for (let i = 0; i < columns; i++) {
-        drops[i] = 1;
+        drops[i] = Math.floor(Math.random() * canvas.height / fontSize);
         }
     };
     initDrops();
