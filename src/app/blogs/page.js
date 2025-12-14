@@ -7,9 +7,11 @@ import { BlogSection, BlogCard, CardImg, TitleContent, HeaderThree, Hr, CardInfo
 import Blogs from '@/components/Blogs/Blogs';
 
 const ViewAllContainer = styled.div`
-  max-width: 1200px;
+  max-width: auto;
   margin: 0 auto;
   padding: 2rem 0;
+  min-height: 100vh;
+  background: #0F1624;
 `;
 
 const StyledBlogCard = styled(BlogCard)`

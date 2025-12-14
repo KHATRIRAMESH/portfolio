@@ -7,9 +7,15 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 const Container = styled.div`
-  max-width: 900px;
+  max-width:auto;
   margin: 0 auto;
-  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  paddisng: 4rem 2rem;
+  min-height: 100vh;
+  background: #0F1624;
 `;
 
 const BackButton = styled(Link)`

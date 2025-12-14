@@ -45,6 +45,11 @@ const Header = () => (
           <NavLink>About</NavLink>
         </Link>
       </li>
+      <li>
+        <Link href="/blogs" legacyBehavior>
+          <NavLink>Blogs</NavLink>
+        </Link>
+      </li>
     </Div2>
     <Div3>
       <SocialIcons href={GithubUrl} target="_blank">
