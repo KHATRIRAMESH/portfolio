@@ -71,7 +71,7 @@ export const BoxText = styled.p`
   font-size: 18px;
   line-height: 24px;
   letter-spacing: 0.02em;
-  color: rgba(255, 255, 255, 0.75);
+  color: #FFFFFF;
 
   @media ${props => props.theme.breakpoints.md}{
     font-size: 16px;
@@ -110,7 +110,7 @@ export const JoinText = styled.h5`
   font-size: 24px;
   line-height: 40px;
   letter-spacing: 0.02em;
-  color: rgba(255, 255, 255, 0.5);
+  color: #FFFFFF;
 
 @media ${props => props.theme.breakpoints.md}{
   line-height: 32px;

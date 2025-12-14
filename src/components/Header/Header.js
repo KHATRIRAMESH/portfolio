@@ -25,7 +25,7 @@ const Header = () => (
         href="/"
         style={{ display: "flex", alignItems: "center", color: "white" }}>
 
-        <DiCssdeck size="3rem" /> <span>Portfolio</span>
+        <DiCssdeck size="3rem" /> <span>Ramesh</span>
 
       </Link>
     </Div1>

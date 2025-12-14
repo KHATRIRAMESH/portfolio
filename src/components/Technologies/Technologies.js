@@ -12,6 +12,7 @@ import {
   ListItem,
   ListParagraph,
   ListTitle,
+  TechnologiesContainer,
 } from "./TechnologiesStyles";
 
 const Technologies = () => (
@@ -19,60 +20,66 @@ const Technologies = () => (
     <SectionDivider divider />
     <SectionTitle>Technologies</SectionTitle>
     <SectionText>
-      I've worked with a range a technologies in the web development world. From
-      Back-end To Blockchain
+      Backend-focused fullstack engineer specializing in scalable server-side systems and distributed architectures.
     </SectionText>
-    <List>
-      <ListItem>
-        <picture>
-          <DiReact size="3rem" />
-        </picture>
-        <ListContainer>
-          <ListTitle>Front-End</ListTitle>
-          <ListParagraph>
-            Experience with Next.js
-            <br />
-            React.js, Bootstrap, MaterialUi
-            <br />
-            Ant Design, HTML5, CSS3 <br />& JavaScript
-          </ListParagraph>
-        </ListContainer>
-      </ListItem>
-      <ListItem>
-        <picture>
-          <DiFirebase size="3rem" />
-        </picture>
-        <ListContainer>
-          <ListTitle>Back-End</ListTitle>
-          <ListParagraph>
-            Experience with Node.js
-            <br />
-            Express.js, GraphQL, Nest.js
-            <br />
-            TypeScript, Microservices
-            <br />
-            Docker, PubSub, RabbitMQ
-            <br />
-            Prisma, Sequelize, MongoDB
-            <br />
-            MYSQL & Postgres
-          </ListParagraph>
-        </ListContainer>
-      </ListItem>
-      <ListItem>
-        <picture>
-          <DiFirebase size="3rem" />
-        </picture>
-        <ListContainer>
-          <ListTitle>Blockchain</ListTitle>
-          <ListParagraph>
-            Experience with <br />
-            Solana Blockchain <br />
-            using Rust
-          </ListParagraph>
-        </ListContainer>
-      </ListItem>
-    </List>
+    <TechnologiesContainer>
+      <List>
+        <ListItem>
+          <picture>
+            <DiFirebase size="3rem" />
+          </picture>
+          <ListContainer>
+            <ListTitle>Backend</ListTitle>
+            <ListParagraph>
+              Node.js, NestJS, ExpressJS<br />
+              GraphQL, REST, Socket.io<br />
+              Stripe Integration, BullMQ<br />
+              Microservices
+            </ListParagraph>
+          </ListContainer>
+        </ListItem>
+        <ListItem>
+          <picture>
+            <DiReact size="3rem" />
+          </picture>
+          <ListContainer>
+            <ListTitle>Frontend</ListTitle>
+            <ListParagraph>
+              React, Next.js, Tailwind CSS<br />
+              Zustand, UI Component Design<br />
+              HTML5, CSS3, JavaScript
+            </ListParagraph>
+          </ListContainer>
+        </ListItem>
+        <ListItem>
+          <picture>
+            <DiFirebase size="3rem" />
+          </picture>
+          <ListContainer>
+            <ListTitle>Database</ListTitle>
+            <ListParagraph>
+              PostgreSQL, MongoDB<br />
+              Redis (Caching)<br />
+              Optimization & Indexing
+            </ListParagraph>
+          </ListContainer>
+        </ListItem>
+        <ListItem>
+          <picture>
+            <DiZend size="3rem" />
+          </picture>
+          <ListContainer>
+            <ListTitle>Cloud & DevOps</ListTitle>
+            <ListParagraph>
+              Google Cloud (GCP), Cloud Run<br />
+              Docker, GitHub Actions CI/CD<br />
+              Cloud Storage, Secrets Mgmt<br />
+              Git, API Gateway
+            </ListParagraph>
+          </ListContainer>
+        </ListItem>
+      </List>
+    </TechnologiesContainer>
     <SectionDivider colorAlt />
   </Section>
 );

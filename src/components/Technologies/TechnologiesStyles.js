@@ -27,12 +27,21 @@ export const MainImage = styled.img`
   width: 100%;
 `
 
+export const TechnologiesContainer = styled.div`
+  width: 100%;
+  background: #0F1624;
+  border-radius: 10px;
+  box-shadow: 3px 3px 20px rgba(80, 78, 78, 0.5);
+  padding: 40px;
+  margin-bottom: 40px;
+`
+
 export const List = styled.ul`
   list-style-type: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
-  margin: 3rem 0;
+  margin: 0; /* Margin handled by container padding */
   
   @media ${props => props.theme.breakpoints.lg}{
     margin: 64px 0;
@@ -84,7 +93,7 @@ export const ListTitle = styled.h4`
 export const ListParagraph = styled.p`
   font-size: 18px;
   line-height: 30px;
-  color: rgba(255, 255, 255, 0.75);
+  color: #FFFFFF;
 
   @media ${props => props.theme.breakpoints.md}{
     font-size: 16px;

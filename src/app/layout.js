@@ -1,0 +1,24 @@
+import Theme from "@/styles/theme";
+import StyledComponentsRegistry from "./registry";
+
+export const metadata = {
+    title: 'Portfolio',
+    description: 'My Portfolio',
+};
+
+export default function RootLayout({ children }) {
+    return (
+        <html lang="en">
+            <head>
+                <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+            </head>
+            <body>
+                <StyledComponentsRegistry>
+                    <Theme>
+                        {children}
+                    </Theme>
+                </StyledComponentsRegistry>
+            </body>
+        </html>
+    );
+}

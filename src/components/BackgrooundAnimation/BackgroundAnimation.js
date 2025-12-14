@@ -16,27 +16,31 @@ const BackgroundAnimation = () => {
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    const letters = '日本語のキーボード';
-    // const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%';
+    // Initial fill with theme background
+    ctx.fillStyle = '#0F1624';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // const letters = '日本語のキーボード';
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%';
     const fontSize = 24;
     let columns = Math.floor(canvas.width / fontSize);
     let drops = [];
 
     // Initialize drops
     const initDrops = () => {
-        columns = Math.floor(canvas.width / fontSize);
-        drops = [];
-        for (let i = 0; i < columns; i++) {
+      columns = Math.floor(canvas.width / fontSize);
+      drops = [];
+      for (let i = 0; i < columns; i++) {
         drops[i] = Math.floor(Math.random() * canvas.height / fontSize);
-        }
+      }
     };
     initDrops();
-    
+
     // Handle resize re-initialization manually in draw loop check or just let it adjust
     // Better to re-init drops on resize to avoid out of bounds
     const handleResize = () => {
-        resizeCanvas();
-        initDrops();
+      resizeCanvas();
+      initDrops();
     }
     window.removeEventListener('resize', resizeCanvas); // replace with full handler
     window.addEventListener('resize', handleResize);

@@ -6,7 +6,7 @@ import {
   SectionTitle,
 } from "../../styles/GlobalComponents";
 import { LeftSection } from "./HeroStyles";
-import { FiverUrl, ResumeUrl, UpworkUrl, HeroData } from "../../constants/constants";
+import { ResumeUrl, HeroData } from "../../constants/constants";
 import LinkButton from "../../styles/GlobalComponents/LinkButton";
 
 const Hero = (props) => (
@@ -28,12 +28,7 @@ const Hero = (props) => (
             margin: "0 0 80px",
           }}
         >
-          <LinkButton alt="upwork" href={UpworkUrl} target="_blank">
-            Upwork
-          </LinkButton>
-          <LinkButton alt="fiverr" href={FiverUrl} target="_blank">
-            Fiverr
-          </LinkButton>
+
           <LinkButton alt="resume" href={ResumeUrl} target="_blank">
             Resume
           </LinkButton>
