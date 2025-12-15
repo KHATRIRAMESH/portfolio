@@ -5,6 +5,7 @@ export const Section = styled.section`
   flex-direction: ${(props) => props.row ? "row" : "column"};
   padding: ${(props) => props.nopadding ? "0" : "32px 48px 0"} ;
   margin: 0 auto;
+  gap: 40px;
   background: #0F1624;
   max-width: 1040px;
   box-sizing: content-box;

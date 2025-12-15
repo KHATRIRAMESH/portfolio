@@ -46,7 +46,7 @@ const Header = () => (
         </Link>
       </li>
       <li>
-        <Link href="/blogs" legacyBehavior>
+        <Link href="/blogs" legacyBehavior prefetch={true}>
           <NavLink>Blogs</NavLink>
         </Link>
       </li>
