@@ -3,9 +3,11 @@ import { blogTable } from '@/db/schema';
 import { NextResponse } from 'next/server';
 import { isAuthenticated } from '@/lib/auth';
 
+import { desc } from 'drizzle-orm';
+
 export async function GET(request) {
     try {
-        const blogs = await db.select().from(blogTable);
+        const blogs = await db.select().from(blogTable).orderBy(desc(blogTable.createdAt));
         return NextResponse.json(blogs);
     } catch (error) {
         console.error('Error fetching blogs:', error);

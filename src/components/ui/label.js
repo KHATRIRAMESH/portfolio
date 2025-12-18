@@ -1,17 +1,16 @@
-import styled from 'styled-components';
-
-const StyledLabel = styled.label`
-  display: block;
-  font-size: ${props => props.className?.includes('text-lg') ? '1.125rem' : '0.875rem'};
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-  color: inherit;
-`;
+import { cn } from "@/lib/utils";
 
 export const Label = ({ children, className, ...props }) => {
     return (
-        <StyledLabel className={className} {...props}>
+        <label
+            className={cn(
+                "block font-medium mb-2 text-inherit",
+                className?.includes('text-lg') ? "text-lg" : "text-sm",
+                className
+            )}
+            {...props}
+        >
             {children}
-        </StyledLabel>
+        </label>
     );
 };

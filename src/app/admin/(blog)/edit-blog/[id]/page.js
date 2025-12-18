@@ -9,14 +9,26 @@ import "react-toastify/dist/ReactToastify.css";
 import "quill/dist/quill.snow.css";
 import dynamic from 'next/dynamic';
 
-const CreatePost = () => {
+const EditPost = ({ params }) => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [category, setCategory] = useState("");
     const [image, setImage] = useState("");
+    const [loading, setLoading] = useState(true);
+    const [blogId, setBlogId] = useState(null);
     const router = useRouter();
 
+    const editorRef = useRef(null);
+    const quillInstanceRef = useRef(null);
+
+    // Unwrap params and authenticate
     useEffect(() => {
+        const unwrapParams = async () => {
+            const resolvedParams = await params;
+            setBlogId(resolvedParams.id);
+        };
+        unwrapParams();
+
         const token = localStorage.getItem('adminToken');
         if (!token) {
             toast.error("Unauthorized access. Please login.", {
@@ -25,11 +37,41 @@ const CreatePost = () => {
             });
             router.push("/admin/login");
         }
-    }, [router]);
+    }, [params, router]);
 
-    const editorRef = useRef(null);
-    const quillInstanceRef = useRef(null);
+    // Fetch existing blog data
+    useEffect(() => {
+        const fetchBlog = async () => {
+            if (!blogId) return;
 
+            try {
+                const res = await fetch(`/api/blogs/${blogId}`);
+                if (res.ok) {
+                    const data = await res.json();
+                    setTitle(data.title);
+                    setCategory(data.category);
+                    setImage(data.image);
+                    setContent(data.content);
+
+                    // If quill is already initialized, set its content
+                    if (quillInstanceRef.current) {
+                        quillInstanceRef.current.root.innerHTML = data.content;
+                    }
+                } else {
+                    toast.error("Failed to fetch blog data");
+                }
+            } catch (error) {
+                console.error(error);
+                toast.error("Error fetching blog");
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchBlog();
+    }, [blogId]);
+
+    // Initialize Quill
     useEffect(() => {
         const initQuill = async () => {
             if (editorRef.current && !quillInstanceRef.current) {
@@ -53,6 +95,11 @@ const CreatePost = () => {
                 });
 
                 quillInstanceRef.current = quill;
+
+                // If content was fetched before quill init, set it now
+                if (content) {
+                    quill.root.innerHTML = content;
+                }
             }
         };
 
@@ -63,7 +110,7 @@ const CreatePost = () => {
                 quillInstanceRef.current = null;
             }
         };
-    }, []);
+    }, []); // Only run once on mount
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -79,8 +126,8 @@ const CreatePost = () => {
         try {
             const token = localStorage.getItem('adminToken');
 
-            const res = await fetch("/api/blogs", {
-                method: "POST",
+            const res = await fetch(`/api/blogs/${blogId}`, {
+                method: "PUT",
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
@@ -93,18 +140,18 @@ const CreatePost = () => {
                 })
             });
 
-            if (res.status === 201) {
-                toast.success("Blog created successfully!", {
+            if (res.status === 200) {
+                toast.success("Blog updated successfully!", {
                     position: "top-right",
                     autoClose: 1000,
                 });
 
                 setTimeout(() => {
-                    router.push("/blogs");
+                    router.push("/admin/dashboard/blogs");
                 }, 2000);
             } else {
                 const data = await res.json();
-                toast.error(data.error || "Failed to create blog", {
+                toast.error(data.error || "Failed to update blog", {
                     position: "top-right",
                     autoClose: 3000,
                 });
@@ -119,14 +166,16 @@ const CreatePost = () => {
     };
 
     const handleBack = () => {
-        router.push("/blogs");
+        router.push("/admin/dashboard/blogs");
     };
+
+    if (loading) return <div className="min-h-screen bg-[#0F1624] flex items-center justify-center text-white">Loading...</div>;
 
     return (
         <div className="min-h-screen bg-[#0F1624] flex items-center justify-center py-8">
             <div className="w-full max-w-[800px] bg-[#0F1624] shadow-[0_4px_20px_rgba(0,0,0,0.5)] rounded-[10px] p-8">
                 <ToastContainer />
-                <h1 className="text-center text-[2rem] font-semibold text-[#9cc9e3] mb-8">Create a New Blog Post</h1>
+                <h1 className="text-center text-[2rem] font-semibold text-[#9cc9e3] mb-8">Edit Blog Post</h1>
 
                 <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                     <div>
@@ -217,16 +266,16 @@ const CreatePost = () => {
                     <div className="flex flex-col gap-4 mt-4">
                         <Button
                             type="submit"
-                            className="bg-green-500 text-white"
+                            className="bg-blue-600 text-white"
                         >
-                            Publish Blog
+                            Update Blog
                         </Button>
                         <Button
                             type="button"
                             onClick={handleBack}
                             className="bg-red-600 text-white"
                         >
-                            Back to Blogs
+                            Cancel
                         </Button>
                     </div>
                 </form>
@@ -235,4 +284,4 @@ const CreatePost = () => {
     );
 };
 
-export default CreatePost;
+export default EditPost;

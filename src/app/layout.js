@@ -1,5 +1,4 @@
-import Theme from "@/styles/theme";
-import StyledComponentsRegistry from "./registry";
+import "./globals.css";
 
 export const metadata = {
     title: 'Portfolio',
@@ -13,11 +12,7 @@ export default function RootLayout({ children }) {
                 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
             </head>
             <body>
-                <StyledComponentsRegistry>
-                    <Theme>
-                        {children}
-                    </Theme>
-                </StyledComponentsRegistry>
+                {children}
             </body>
         </html>
     );

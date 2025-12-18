@@ -3,99 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import styled from 'styled-components';
 import axios from 'axios';
-
-const Container = styled.div`
-  max-width:auto;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  paddisng: 4rem 2rem;
-  min-height: 100vh;
-  background: #0F1624;
-`;
-
-const BackButton = styled(Link)`
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #9cc9e3;
-  text-decoration: none;
-  font-size: 1.4rem;
-  margin-bottom: 2rem;
-  transition: color 0.3s;
-  
-  &:hover {
-    color: #d0bb57;
-  }
-`;
-
-const BlogImage = styled.img`
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 2rem;
-`;
-
-const BlogHeader = styled.div`
-  margin-bottom: 2rem;
-`;
-
-const BlogCategory = styled.span`
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background: #d0bb57;
-  color: #0F1624;
-  border-radius: 5px;
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-`;
-
-const BlogTitle = styled.h1`
-  font-size: 4rem;
-  color: #9cc9e3;
-  margin: 1rem 0;
-  line-height: 1.2;
-  
-  @media ${props => props.theme?.breakpoints?.sm || '(max-width: 640px)'} {
-    font-size: 3rem;
-  }
-`;
-
-const BlogMeta = styled.div`
-  display: flex;
-  gap: 2rem;
-  color: #999;
-  font-size: 1.3rem;
-  margin-top: 1rem;
-`;
-
-const BlogContent = styled.div`
-  color: #e4e6e7;
-  font-size: 1.6rem;
-  line-height: 1.8;
-  white-space: pre-wrap;
-  
-  p {
-    margin-bottom: 1.5rem;
-  }
-`;
-
-const LoadingMessage = styled.div`
-  text-align: center;
-  color: #9cc9e3;
-  font-size: 2rem;
-  padding: 4rem;
-`;
-
-const ErrorMessage = styled(LoadingMessage)`
-  color: #ff4444;
-`;
 
 export default function BlogDetailPage({ params }) {
   const [blog, setBlog] = useState(null);
@@ -131,35 +39,68 @@ export default function BlogDetailPage({ params }) {
     }
   }, [blogId]);
 
-  if (loading) return <LoadingMessage>Loading blog...</LoadingMessage>;
-  if (error) return <ErrorMessage>{error}</ErrorMessage>;
-  if (!blog) return <ErrorMessage>Blog not found</ErrorMessage>;
+  if (loading) return (
+    <div className="flex justify-center items-center min-h-[50vh]">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#13ADC7]"></div>
+    </div>
+  );
+
+  if (error) return (
+    <div className="flex flex-col justify-center items-center min-h-[50vh] text-center px-4">
+      <h2 className="text-2xl text-red-400 mb-4">Oops! Something went wrong</h2>
+      <p className="text-gray-400 mb-6">{error}</p>
+      <Link href="/blogs" className="text-[#13ADC7] hover:underline">← Back to Blogs</Link>
+    </div>
+  );
+
+  if (!blog) return (
+    <div className="flex flex-col justify-center items-center min-h-[50vh] text-center px-4">
+      <h2 className="text-2xl text-white mb-4">Blog Post Not Found</h2>
+      <Link href="/blogs" className="text-[#13ADC7] hover:underline">← Back to Blogs</Link>
+    </div>
+  );
 
   return (
-    <Container>
-      <BackButton href="/blogs">← Back to Blogs</BackButton>
+    <article className="max-w-4xl mx-auto py-20 px-6 sm:px-4 sm:py-12 bg-[#0F1624] min-h-screen">
+      <Link href="/blogs" className="inline-flex items-center gap-2 text-[#9cc9e3] hover:text-[#13ADC7] transition-colors duration-300 mb-10 group">
+        <span className="group-hover:-translate-x-1 transition-transform duration-300">←</span> Back to Blogs
+      </Link>
 
-      {blog.image && (
-        <BlogImage src={blog.image} alt={blog.title} />
-      )}
-
-      <BlogHeader>
-        <BlogCategory>{blog.category}</BlogCategory>
-        <BlogTitle>{blog.title}</BlogTitle>
-        <BlogMeta>
-          <span>
+      <header className="mb-12 border-b border-white/10 pb-12">
+        <div className="flex flex-wrap gap-4 items-center mb-6">
+          <span className="bg-[#13ADC7]/10 text-[#13ADC7] border border-[#13ADC7]/20 px-4 py-1.5 rounded-full text-sm font-medium uppercase tracking-wide">
+            {blog.category}
+          </span>
+          <span className="text-gray-400 text-sm">
             {new Date(blog.createdAt).toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'long',
               day: 'numeric'
             })}
           </span>
-        </BlogMeta>
-      </BlogHeader>
+        </div>
 
-      <BlogContent>
-        {blog.content}
-      </BlogContent>
-    </Container>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight mb-8">
+          {blog.title}
+        </h1>
+
+        {blog.image && (
+          <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/5">
+            <img src={blog.image} alt={blog.title} className="w-full max-h-[500px] object-cover" />
+          </div>
+        )}
+      </header>
+
+      <div className="prose prose-lg prose-invert max-w-none text-[#e4e6e7] leading-relaxed">
+        <div className="whitespace-pre-wrap">{blog.content}</div>
+      </div>
+
+      <div className="mt-20 pt-10 border-t border-white/10 flex justify-between items-center">
+        <span className="text-gray-500 text-sm">Thanks for reading!</span>
+        <div className="flex gap-4">
+          {/* Share buttons or similar could go here */}
+        </div>
+      </div>
+    </article>
   );
 }

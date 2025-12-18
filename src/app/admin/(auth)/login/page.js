@@ -17,9 +17,11 @@ export default function AdminLogin() {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, password }),
         });
-        // console.log(res);
+        console.log(res);
 
         if (res.ok) {
+            const data = await res.json();
+            localStorage.setItem('adminToken', data.token);
             router.push("/admin/dashboard/blogs"); // Redirect after login
         } else {
             const data = await res.json();

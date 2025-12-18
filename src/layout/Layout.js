@@ -4,21 +4,19 @@ import Head from 'next/head'
 import Footer from '../components/Footer/Footer'
 import Header from '../components/Header/Header'
 import BackgroundAnimation from '../components/BackgrooundAnimation/BackgroundAnimation'
-import { Container } from './LayoutStyles'
 import { MetaData } from '../constants/constants'
 
-export const Layout = ({children}) => {
+export const Layout = ({ children }) => {
   return (
-    <Container>
+    <div className="max-w-7xl w-full mx-auto">
       <Head>
         <title>{MetaData.title}</title>
         <meta name="description" content={MetaData.description} />
       </Head>
-      <Header/>
+      <Header />
       <BackgroundAnimation />
-      <main>{children}</main> 
-      <Footer/>
-    </Container>
+      <main>{children}</main>
+      <Footer />
+    </div>
   )
 }
-
