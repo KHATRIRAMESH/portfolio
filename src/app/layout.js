@@ -2,9 +2,9 @@ import { icons } from "lucide-react";
 import "./globals.css";
 
 export const metadata = {
-  title: "Developers",
+  title: "Developer",
   description: "Building the future of web development",
-  icons: { icon: "/terminal_favicon.ico" },
+  // icons: { icon: "/terminal_favicon.ico" },
 };
 
 export default function RootLayout({ children }) {
