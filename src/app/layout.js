@@ -4,7 +4,6 @@ import "./globals.css";
 export const metadata = {
   title: "Developer",
   description: "Building the future of web development",
-  // icons: { icon: "/terminal_favicon.ico" },
 };
 
 export default function RootLayout({ children }) {
