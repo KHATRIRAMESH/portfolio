@@ -8,6 +8,8 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "@/components/Header/Header";
 import TiptapEditor from "@/components/Editor/TiptapEditor";
+import { StepBack } from "lucide-react";
+import Link from "next/link";
 
 const CreatePost = () => {
   const [title, setTitle] = useState("");
@@ -84,7 +86,11 @@ const CreatePost = () => {
 
   return (
     <div className="min-h-screen bg-[#0F1624] flex flex-col items-center justify-center py-8">
-      <Header />
+      <Link href="/admin/dashboard/blogs" className="self-start mb-4 ml-4">
+        <Button className="flex items-center">
+          <StepBack /> <span>Back to Blogs</span>
+        </Button>
+      </Link>
       <div className="w-full max-w-[800px] bg-[#0F1624] shadow-[0_4px_20px_rgba(0,0,0,0.5)] rounded-[10px] p-8">
         <ToastContainer />
         <h1 className="text-center text-[2rem] font-semibold text-[#9cc9e3] mb-8">
