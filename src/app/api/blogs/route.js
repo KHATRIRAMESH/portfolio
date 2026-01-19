@@ -1,35 +1,48 @@
-import { db } from '@/db/drizzle';
-import { blogTable } from '@/db/schema';
-import { NextResponse } from 'next/server';
-import { isAuthenticated } from '@/lib/auth';
+import { NextResponse } from "next/server";
+import { blogService } from "@/services/blogService";
+import { authService } from "@/services/authService";
+import { handleApiError } from "@/lib/errors";
 
-import { desc } from 'drizzle-orm';
+export const revalidate = 60; // cache for 60s (ISR-like)
 
+/**
+ * GET /api/blogs
+ * Fetch all blogs
+ */
 export async function GET(request) {
-    try {
-        const blogs = await db.select().from(blogTable).orderBy(desc(blogTable.createdAt));
-        return NextResponse.json(blogs);
-    } catch (error) {
-        console.error('Error fetching blogs:', error);
-        return NextResponse.json({ error: 'Failed to fetch blogs' }, { status: 500 });
-    }
+  try {
+    const blogs = await blogService.getAllBlogs();
+    return NextResponse.json(blogs, {
+      headers: {
+        "Cache-Control": "public, s-maxage=60, stale-while-revalidate=600",
+      },
+    });
+  } catch (error) {
+    const { error: message, statusCode } = handleApiError(error);
+    return NextResponse.json({ error: message }, { status: statusCode });
+  }
 }
 
+/**
+ * POST /api/blogs
+ * Create a new blog (requires authentication)
+ */
 export async function POST(request) {
+  try {
     // Check authentication
-    if (!isAuthenticated(request)) {
-        return NextResponse.json(
-            { error: 'Unauthorized. Please login as admin.' },
-            { status: 401 }
-        );
+    if (!authService.isAuthenticated(request)) {
+      return NextResponse.json(
+        { error: "Unauthorized. Please login as admin." },
+        { status: 401 },
+      );
     }
 
-    try {
-        const { title, content, category, image } = await request.json();
-        const blog = await db.insert(blogTable).values({ title, content, category, image }).returning();
-        return NextResponse.json(blog[0], { status: 201 });
-    } catch (error) {
-        console.error('Error creating blog:', error);
-        return NextResponse.json({ error: 'Failed to create blog' }, { status: 500 });
-    }
-}   
+    const blogData = await request.json();
+    const blog = await blogService.createBlog(blogData);
+
+    return NextResponse.json(blog, { status: 201 });
+  } catch (error) {
+    const { error: message, statusCode } = handleApiError(error);
+    return NextResponse.json({ error: message }, { status: statusCode });
+  }
+}
