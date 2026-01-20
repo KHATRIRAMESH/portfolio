@@ -6,7 +6,6 @@ import { Label } from "@/components/ui/label";
 import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Header from "@/components/Header/Header";
 import TiptapEditor from "@/components/Editor/TiptapEditor";
 import { StepBack } from "lucide-react";
 import Link from "next/link";
@@ -199,7 +198,7 @@ const CreatePost = () => {
               Post Content:
             </Label>
             <div className="mt-2">
-              <TiptapEditor value={content} onChange={setContent} />
+              <TiptapEditor content={content} onChange={setContent} />
             </div>
           </div>
 

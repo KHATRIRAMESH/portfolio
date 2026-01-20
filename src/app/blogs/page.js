@@ -1,6 +1,8 @@
-'use client';
+"use client";
 
-import Blogs from '@/components/Blogs/Blogs';
+import Blogs from "@/components/Blogs/Blogs";
+import Button from "@/components/Button";
+import Link from "next/link";
 
 export default function BlogsPage() {
   return (

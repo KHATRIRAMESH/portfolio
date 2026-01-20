@@ -215,7 +215,7 @@ const EditPost = ({ params }) => {
           <div>
             <Label className="text-lg">Post Content:</Label>
             <div className="mt-2">
-              <TiptapEditor value={content} onChange={setContent} />
+              <TiptapEditor content={content} onChange={setContent} />
             </div>
           </div>
 

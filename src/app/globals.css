@@ -50,3 +50,40 @@
     color: hsl(var(--foreground));
   }
 }
+
+/* Tiptap / ProseMirror basics */
+.ProseMirror {
+  outline: none;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Dark mode friendly prose classes (using Tailwind prose) */
+.prose-invert {
+  color: #e5e7eb; /* text-gray-200 */
+}
+
+.prose-invert h1,
+.prose-invert h2,
+.prose-invert h3 {
+  color: #9cc9e3; /* your accent color */
+}
+
+.prose-invert strong {
+  color: #fff;
+}
+
+.prose-invert code {
+  background-color: #1a1a2e;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+}
+
+/* Placeholder */
+.ProseMirror p.is-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #666;
+  pointer-events: none;
+  height: 0;
+}
