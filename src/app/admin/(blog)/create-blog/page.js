@@ -9,12 +9,13 @@ import "react-toastify/dist/ReactToastify.css";
 import TiptapEditor from "@/components/Editor/TiptapEditor";
 import { StepBack } from "lucide-react";
 import Link from "next/link";
+import { apiClient } from "@/lib";
 
 const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState(null); // TipTap JSON
   const [category, setCategory] = useState("");
-  const [published, setPublished] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [image, setImage] = useState("");
   const router = useRouter();
 
@@ -32,6 +33,30 @@ const CreatePost = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!title) {
+      toast.error("Please enter a title", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+      return;
+    }
+
+    if (!category) {
+      toast.error("Please enter a category", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+      return;
+    }
+
+    if (!content) {
+      toast.error("Please enter a content", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+      return;
+    }
+
     if (!image) {
       toast.error("Please upload a featured image", {
         position: "top-right",
@@ -41,41 +66,43 @@ const CreatePost = () => {
     }
 
     try {
-      const token = localStorage.getItem("adminToken");
+      setLoading(true);
 
-      // Create blog with content stored in DB
-      const res = await fetch("/api/blogs", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ title, category, image, content }),
+      // apiClient automatically adds Authorization header and handles headers
+      const res = await apiClient.post("/api/blogs", {
+        title,
+        category,
+        image,
+        content,
       });
 
-      if (res.status === 201) {
+      // apiClient returns response.data directly.
+      // If we reach here, the request was successful (2xx).
+      if (res) {
         toast.success("Blog created successfully!", {
           position: "top-right",
           autoClose: 1000,
         });
-        setPublished(true);
 
         setTimeout(() => {
           router.push("/blogs");
         }, 2000);
-      } else {
-        const data = await res.json();
-        toast.error(data.error || "Failed to create blog", {
-          position: "top-right",
-          autoClose: 3000,
-        });
       }
     } catch (error) {
       console.error(error);
-      toast.error("Something went wrong", {
+      // Determine error message
+      const errorMessage =
+        error.message ||
+        (error.response && error.response.data && error.response.data.error) ||
+        "Failed to create blog";
+
+      toast.error(errorMessage, {
         position: "top-right",
         autoClose: 3000,
       });
+    }
+    finally {
+      setLoading(false);
     }
   };
 
@@ -204,7 +231,7 @@ const CreatePost = () => {
 
           <div className="flex flex-col gap-4 mt-4">
             <Button type="submit" className="bg-green-500 text-white">
-              {published ? "Publishing..." : "Publish Post"}
+              {loading ? "Publishing..." : "Publish Post"}
             </Button>
             <Button
               type="button"

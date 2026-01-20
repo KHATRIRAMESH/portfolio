@@ -60,9 +60,9 @@ export const TimeLineData = [
   },
 ];
 
-export const ResumeUrl = ""; // Leaving as is or should I clear it? User didn't provide new one.
-export const GithubUrl = "https://github.com/KHATRIRAMESH"; // User didn't provide new ID, keeping existing or placeholder.
-export const LinkedInUrl = "https://www.linkedin.com/in/"; // Placeholder
+export const ResumeUrl = "https://drive.google.com/file/d/1tROt4HBUDQNvVelcQppOuBak49dIyVLe/view?usp=drive_link";
+export const GithubUrl = "https://github.com/KHATRIRAMESH";
+export const LinkedInUrl = "https://www.linkedin.com/in/ramesh-khatri-6b5565204";
 export const FacebookUrl = "";
 export const MobileNumber = "(+977) 986-8394119";
 export const PersonalEmail = "khatriramesh972@gmail.com";

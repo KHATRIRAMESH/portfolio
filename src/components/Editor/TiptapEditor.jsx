@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Image from "@tiptap/extension-image";
@@ -47,6 +48,13 @@ const TiptapEditor = ({ content, onChange }) => {
     },
     immediatelyRender: false,
   });
+
+  // Update editor content when the content prop changes (e.g., after fetching data)
+  useEffect(() => {
+    if (editor && content && editor.getHTML() !== content) {
+      editor.commands.setContent(content);
+    }
+  }, [editor, content]);
 
   return (
     <div className="border-2 border-[#444] rounded-lg bg-[#1a1a2e] overflow-hidden flex flex-col">

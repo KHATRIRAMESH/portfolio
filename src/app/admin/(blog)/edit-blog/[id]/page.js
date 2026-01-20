@@ -4,17 +4,16 @@ import { useRouter } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import TiptapEditor from "@/components/Editor/TiptapEditor";
-
-// import "quill/dist/quill.snow.css"; // or "react-quill/dist/quill.snow.css"
 import { Label } from "@/components/ui/label";
 import Button from "@/components/Button";
+import { apiClient } from "@/lib";
 
 const EditPost = ({ params }) => {
   const [title, setTitle] = useState("");
-  const [content, setContent] = useState(null); // TipTap JSON content
+  const [content, setContent] = useState(null);
   const [category, setCategory] = useState("");
   const [image, setImage] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [blogId, setBlogId] = useState(null);
 
   const router = useRouter();
@@ -40,19 +39,15 @@ const EditPost = ({ params }) => {
 
     const fetchBlog = async () => {
       try {
-        const res = await fetch(`/api/blogs/${blogId}`);
-        if (res.ok) {
-          const data = await res.json();
-          setTitle(data.title);
-          setCategory(data.category);
-          setImage(data.image);
-          // Try parse TipTap JSON if present
-          try {
-            const parsed = data.content ? JSON.parse(data.content) : null;
-            setContent(parsed);
-          } catch {
-            setContent(null);
-          }
+        const data = await apiClient.get(`/api/blogs/${blogId}`);
+
+        if (data) {
+          const blogData = data.data || data;
+          setTitle(blogData.title);
+          setCategory(blogData.category);
+          setImage(blogData.image);
+
+          setContent(blogData.content || "");
         } else {
           toast.error("Failed to fetch blog data");
         }
@@ -75,22 +70,13 @@ const EditPost = ({ params }) => {
     }
 
     try {
-      const token = localStorage.getItem("adminToken");
-      // Update blog with content stored in DB
-      const metaRes = await fetch(`/api/blogs/${blogId}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ title, category, image, content }),
+      setLoading(true);
+      const metaRes = await apiClient.put(`/api/blogs/${blogId}`, {
+        title,
+        category,
+        image,
+        content,
       });
-
-      if (!metaRes.ok) {
-        const err = await metaRes.json();
-        throw new Error(err.error || "Failed to update blog");
-      }
-
       toast.success("Blog updated successfully!");
       setTimeout(() => router.push("/admin/dashboard/blogs"), 1500);
     } catch (error) {
@@ -100,15 +86,6 @@ const EditPost = ({ params }) => {
   };
 
   const handleBack = () => router.push("/admin/dashboard/blogs");
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-[#0F1624] flex items-center justify-center text-white">
-        Loading...
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen bg-[#0F1624] flex items-center justify-center py-8">
       <div className="w-full max-w-[800px] bg-[#0F1624] shadow-[0_4px_20px_rgba(0,0,0,0.5)] rounded-[10px] p-8">
@@ -221,7 +198,7 @@ const EditPost = ({ params }) => {
 
           <div className="flex flex-col gap-4 mt-4">
             <Button type="submit" className="bg-blue-600 text-white">
-              Update Blog
+              {loading ? "Updating..." : "Update Blog"}
             </Button>
             <Button
               type="button"

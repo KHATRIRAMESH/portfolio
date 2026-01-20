@@ -6,7 +6,6 @@ import Image from "next/image";
 import { getThumbUrl } from "@/lib/cloudinary";
 import { useBlogs } from "@/hooks/useBlog";
 import { formatDate } from "@/lib/formatters";
-import Header from "../Header/Header";
 import Button from "../Button";
 import { StepBack } from "lucide-react";
 
@@ -35,11 +34,6 @@ const Blogs = () => {
         id="blogs"
       >
         <div className="w-16 h-1.5 rounded-[10px] bg-gradient-to-r from-[#13ADC7] to-[#945DD6] my-16 sm:w-8 sm:h-0.5 md:w-12 md:h-1" />
-        <Link href="/">
-          <Button>
-            <StepBack /> <span>Back to Home</span>
-          </Button>
-        </Link>
         <h2 className="font-extrabold text-[65px] leading-[72px] mb-4 text-white sm:text-[28px] sm:leading-[32px] md:text-[56px] md:leading-[56px] w-full">
           Blogs
         </h2>
@@ -50,11 +44,16 @@ const Blogs = () => {
 
   return (
     <div>
+      <Link href="/" >
+        <Button className="flex items-center gap-2" >
+          <StepBack /> <span>Back to Home</span>
+        </Button>
+      </Link>
       <section
         className="flex flex-col p-0 mx-auto max-w-5xl box-content overflow-hidden relative sm:p-4 sm:w-full"
         id="blogs"
       >
-        <div className="w-16 h-1.5 rounded-[10px] bg-gradient-to-r from-[#13ADC7] to-[#945DD6] my-16 sm:w-8 sm:h-0.5 md:w-12 md:h-1" />
+        <div className="w-16 h-1.5 rounded-[10px] bg-gradient-to-r from-[#13ADC7] to-[#945DD6] mb-16 sm:w-8 sm:h-0.5 md:w-12 md:h-1" />
         <h2 className="font-extrabold text-[65px] leading-[72px] mb-4 text-white sm:text-[28px] sm:leading-[32px] md:text-[56px] md:leading-[56px] w-full">
           Blogs
         </h2>
