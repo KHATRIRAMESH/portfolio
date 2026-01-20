@@ -57,9 +57,9 @@ const Header = () => {
         <a href={LinkedInUrl} className="text-white transition-all duration-300 hover:text-[#13ADC7] hover:-translate-y-1 p-2">
           <AiFillLinkedin size="3rem" />
         </a>
-        <a href={FacebookUrl} className="text-white transition-all duration-300 hover:text-[#13ADC7] hover:-translate-y-1 p-2">
+        {/* <a href={FacebookUrl} className="text-white transition-all duration-300 hover:text-[#13ADC7] hover:-translate-y-1 p-2">
           <AiFillFacebook size="3rem" />
-        </a>
+        </a> */}
       </div>
 
       {/* Mobile Menu Icon */}
