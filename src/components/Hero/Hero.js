@@ -15,7 +15,7 @@ const Hero = (props) => (
           {HeroData.description}
         </p>
         <div className="flex flex-wrap gap-4">
-          <a href={ResumeUrl} target="_blank" className={buttonVariants({ size: "lg", className: "bg-gradient-to-r from-[#13ADC7] to-[#945DD6] text-white hover:opacity-90 transition-opacity duration-300" })}>
+          <a href={ResumeUrl} target="_blank" rel="noopener noreferrer" className={buttonVariants({ size: "lg", className: "bg-gradient-to-r from-[#13ADC7] to-[#945DD6] text-white hover:opacity-90 transition-opacity duration-300" })}>
             Resume
           </a>
         </div>

@@ -60,7 +60,7 @@ export const TimeLineData = [
   },
 ];
 
-export const ResumeUrl = "https://drive.google.com/file/d/1tROt4HBUDQNvVelcQppOuBak49dIyVLe/view?usp=drive_link";
+export const ResumeUrl = "https://drive.google.com/uc?export=download&id=1tROt4HBUDQNvVelcQppOuBak49dIyVLe";
 export const GithubUrl = "https://github.com/KHATRIRAMESH";
 export const LinkedInUrl = "https://www.linkedin.com/in/ramesh-khatri-6b5565204";
 export const FacebookUrl = "";
