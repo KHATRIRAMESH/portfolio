@@ -41,9 +41,9 @@ const Footer = () => {
           <a href={LinkedInUrl} target="_blank" className="text-white transition duration-300 hover:bg-[#212d45] hover:scale-125 rounded-full p-2">
             <AiFillLinkedin size="3rem" />
           </a>
-          <a href={FacebookUrl} target="_blank" className="text-white transition duration-300 hover:bg-[#212d45] hover:scale-125 rounded-full p-2">
+          {/* <a href={FacebookUrl} target="_blank" className="text-white transition duration-300 hover:bg-[#212d45] hover:scale-125 rounded-full p-2">
             <AiFillFacebook size="3rem" />
-          </a>
+          </a> */}
         </div>
       </div>
     </section>
