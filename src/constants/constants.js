@@ -73,11 +73,11 @@ export const PersonalEmail = "khatriramesh972@gmail.com";
 export const HeroData = {
   name: "Ramesh Khatri",
   description:
-    "A Full Stack Backend & DevOps specializing in scalable server-side applications with Node.js. Proficent in Nest.js and DevOps tools.",
+    "Backend-focused fullstack engineer specializing in scalable server-side systems, distributed architectures, and production-grade API design. Skilled in Node.js, NestJS, PostgreSQL, Redis, message queues, authentication workflows, and cloud deployment pipelines. Strong complementary frontend experience with React, Next.js, Tailwind CSS, and Zustand. Adept at building high-performance services, optimizing database operations, implementing CI/CD pipelines, and managing full lifecycle development across modern cloud ecosystems.",
 };
 
 export const FooterData = {
-  slogan: "Innovating multiple project at a time",
+  slogan: "Building robust backend systems with seamless frontend experiences.",
 };
 
 export const MetaData = {
