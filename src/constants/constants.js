@@ -13,7 +13,7 @@ export const projects = [
     title: "PropertyX",
     description:
       "Tokenized real estate secured by Bitcoin. Unlock liquidity without selling your property. Developed backend logic, user authentication, with database integration for file management.",
-    image: 'images/propertyx.png',
+    image: "images/propertyx.png",
     tags: ["Backend", "Real Estate", "Tokenization"],
     visit: null,
     source: null,
@@ -23,7 +23,7 @@ export const projects = [
     title: "BuildersAcademy",
     description:
       "Company website with fullstack job posting system, admin dashboard, API services, and frontend UI built with Next.js and Tailwind CSS.",
-    image: 'images/buildersacademy.png',
+    image: "images/buildersacademy.png",
     tags: ["Fullstack", "Next.js", "Tailwind CSS"],
     visit: null,
     source: null,
@@ -33,7 +33,7 @@ export const projects = [
     title: "GCLawChamber",
     description:
       "Portfolio platform with content management, image handling, and interactive UI built with React and Next.js.",
-    image: 'images/gclawchamber.png',
+    image: "images/gclawchamber.png",
     tags: ["Frontend", "React", "Next.js"],
     visit: null,
     source: null,
@@ -60,16 +60,20 @@ export const TimeLineData = [
   },
 ];
 
-export const ResumeUrl = "https://drive.google.com/uc?export=download&id=1tROt4HBUDQNvVelcQppOuBak49dIyVLe";
+// export const ResumeUrl = "https://drive.google.com/uc?export=download&id=1tROt4HBUDQNvVelcQppOuBak49dIyVLe";
+export const ResumeUrl =
+  "https://drive.google.com/file/d/1PWzRsKLRbvstvW8sM05zb3If049pUJuy/view?usp=drive_link";
 export const GithubUrl = "https://github.com/KHATRIRAMESH";
-export const LinkedInUrl = "https://www.linkedin.com/in/ramesh-khatri-6b5565204";
+export const LinkedInUrl =
+  "https://www.linkedin.com/in/ramesh-khatri-6b5565204";
 export const FacebookUrl = "";
 export const MobileNumber = "(+977) 986-8394119";
 export const PersonalEmail = "khatriramesh972@gmail.com";
 
 export const HeroData = {
   name: "Ramesh Khatri",
-  description: "A Full Stack Backend & DevOps specializing in scalable server-side applications with Node.js. Proficent in Nest.js and DevOps tools.",
+  description:
+    "A Full Stack Backend & DevOps specializing in scalable server-side applications with Node.js. Proficent in Nest.js and DevOps tools.",
 };
 
 export const FooterData = {
