@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Developer",
+  title: "I'm Ramesh Khatri",
   keywords:
     "web developer, portfolio, projects, skills, JavaScript, React, web design, frontend development, backend development, full-stack developer, coding, programming, software development, tech stack, resume, contact, NestJS, NextJS, NodeJS, ExpressJS, MongoDB, SQL, HTML, CSS, TailwindCSS, Git, GitHub, RESTful APIs, GraphQL, TypeScript, Redux, Zustand",
   author: "Ramesh Khatri",
