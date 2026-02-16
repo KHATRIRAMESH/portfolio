@@ -14,7 +14,7 @@ export const Layout = ({ children }) => {
         <meta name="description" content={MetaData.description} />
       </Head>
       <Header />
-      <BackgroundAnimation />
+      {/* <BackgroundAnimation /> */}
       <main>{children}</main>
       <Footer />
     </div>

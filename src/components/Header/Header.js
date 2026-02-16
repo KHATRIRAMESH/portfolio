@@ -15,7 +15,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
-    <div className="sticky top-0 z-50 backdrop-blur-md bg-[#0F1624]/80 border-b border-white/10 w-full flex justify-between items-center p-4 sm:p-2 sm:px-4">
+    <div className="sticky top-0 z-50 backdrop-blur-md bg-[#0F1624]/80 border-b  rounded-lg border-white/10 w-full flex justify-between items-center p-4 sm:p-2 sm:px-4">
       <div className="flex items-center">
         <Link
           href="/"
