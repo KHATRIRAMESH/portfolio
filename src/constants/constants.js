@@ -60,9 +60,9 @@ export const TimeLineData = [
   },
 ];
 
-// export const ResumeUrl = "https://drive.google.com/uc?export=download&id=1tROt4HBUDQNvVelcQppOuBak49dIyVLe";
-export const ResumeUrl =
-  "https://drive.google.com/file/d/1PWzRsKLRbvstvW8sM05zb3If049pUJuy/view?usp=drive_link";
+export const ResumeUrl = "https://drive.google.com/file/d/1eigI16XRIl5fOA3zmT6YX86BzSaO4SRd/view?usp=drive_link";
+// export const ResumeUrl =
+//   "https://drive.google.com/file/d/1PWzRsKLRbvstvW8sM05zb3If049pUJuy/view?usp=drive_link";
 export const GithubUrl = "https://github.com/KHATRIRAMESH";
 export const LinkedInUrl =
   "https://www.linkedin.com/in/ramesh-khatri-6b5565204";
